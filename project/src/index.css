@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+}
+
+.nav-categories button {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  text-align: center;
+}

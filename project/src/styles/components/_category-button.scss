@@ -1,0 +1,52 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.category-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+  border: none;
+  background: $gray-100;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  gap: $spacing-2;
+
+  &:hover {
+    background: $gray-200;
+    transform: translateY(-2px);
+  }
+
+  &__icon {
+    color: $gray-600;
+    font-size: 1.5rem;
+    margin-bottom: $spacing-2;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__label {
+    color: $gray-600;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &--active {
+    background: $primary-color;
+
+    .category-button__icon,
+    .category-button__label {
+      color: $white;
+    }
+
+    &:hover {
+      background: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+}

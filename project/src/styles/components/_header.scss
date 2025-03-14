@@ -1,0 +1,114 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.header {
+  background-color: $white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &__container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+
+  &__info-items {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  &__logo {
+    height: 2rem;
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 42rem;
+    margin: 0 3rem;
+    position: relative;
+
+    &-input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border: 1px solid $gray-200;
+      border-radius: 0.5rem;
+
+      &::placeholder {
+        color: $gray-600;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.625rem;
+      color: $gray-600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__action-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid $gray-200;
+
+    &-button {
+      font-weight: 500;
+
+      &--highlight {
+        color: $primary-color;
+      }
+
+      &--subscription {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+    }
+  }
+}

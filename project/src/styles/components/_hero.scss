@@ -1,0 +1,63 @@
+@use '../variables' as *;
+
+.hero {
+  position: relative;
+  height: 400px;
+  background-image: url('https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+
+  @media (min-width: 768px) {
+    height: 500px;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: $white;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+    }
+  }
+
+  &__button {
+    background-color: #FFD700;
+    color: black;
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    width: fit-content;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #FFC700;
+    }
+  }
+}

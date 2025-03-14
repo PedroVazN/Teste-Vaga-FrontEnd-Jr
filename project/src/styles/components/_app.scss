@@ -1,0 +1,366 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.app {
+  min-height: 100vh;
+  background-color: $gray-100;
+}
+
+.categories-section {
+  padding: $spacing-8 0;
+  background-color: $white;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: $spacing-4;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @media (max-width: $xl) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (max-width: $lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: $md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $sm) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-2;
+    }
+  }
+}
+
+.products-section {
+  padding: $spacing-8 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: $spacing-4;
+    justify-content: center;
+    margin-bottom: $spacing-8;
+    padding-bottom: $spacing-4;
+    border-bottom: 1px solid $gray-200;
+
+    @media (max-width: $md) {
+      justify-content: flex-start;
+      padding-bottom: $spacing-2;
+    }
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $gray-100;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $gray-300;
+      border-radius: 2px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @media (max-width: $lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-4;
+    }
+
+    @media (max-width: $sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__view-all {
+    a {
+      color: $gray-600;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($gray-600, $lightness: -15%);
+      }
+    }
+  }
+}
+
+.nav-categories {
+  &__button {
+    padding: $spacing-2 $spacing-4;
+    border: none;
+    background: none;
+    color: $gray-600;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &--active {
+      color: $primary-color;
+      font-weight: 600;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -$spacing-4;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.partners-section {
+  padding: 2rem 0;
+
+  &__title {
+    color: $primary-color;
+    margin-bottom: 2rem;
+  }
+
+  &__view-all {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    a {
+      color: $gray-600;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($gray-600, $lightness: -10%);
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__card {
+    position: relative;
+    height: 280px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+
+    &-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    &-title {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: $white;
+      margin-bottom: 1rem;
+    }
+
+    &-text {
+      color: $white;
+      margin-bottom: 1rem;
+    }
+
+    &-button {
+      background-color: #FFD700;
+      color: black;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.375rem;
+      width: fit-content;
+      font-weight: 600;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #FFC700;
+      }
+    }
+  }
+}
+
+.newsletter {
+  background-color: #1C1C1C;
+  padding: 2rem 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: $white;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: #9CA3AF;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 48rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+  }
+
+  &__button {
+    background-color: #FFD700;
+    color: black;
+    padding: 0.5rem 2rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #FFC700;
+    }
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $white;
+    margin-top: 1rem;
+  }
+}
+
+.footer {
+  background-color: $white;
+  padding: 2rem 0;
+  border-top: 1px solid $gray-200;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__logo {
+    height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: $gray-600;
+    margin-bottom: 1rem;
+  }
+
+  &__social {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $gray-600;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($gray-600, $lightness: -20%);
+      }
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    a {
+      color: $gray-600;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($gray-600, $lightness: -20%);
+      }
+    }
+  }
+}
