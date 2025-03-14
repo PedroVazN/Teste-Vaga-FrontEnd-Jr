@@ -1,24 +1,22 @@
-import { useState } from 'react';
-import { ProductCard } from './ProductCard';
-import { NavegacaoProdutos } from './NavegacaoProdutos';
+import React, { useState } from 'react';
+import ProductCard from './ProductCard';
 
 interface Product {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
+  nome: string;
+  descricao: string;
+  imagem: string;
+  preco: number;
 }
 
 interface SecaoProdutosRelacionadosProps {
   products: Product[];
 }
 
-export function SecaoProdutosRelacionados({ products }: SecaoProdutosRelacionadosProps) {
+const SecaoProdutosRelacionados: React.FC<SecaoProdutosRelacionadosProps> = ({ products }) => {
   const [startIndex, setStartIndex] = useState(4);
-  const produtosExibidos = products.slice(startIndex, startIndex + 4);
 
   const handlePrevious = () => {
-    setStartIndex(Math.max(0, startIndex - 4));
+    setStartIndex(Math.max(4, startIndex - 4));
   };
 
   const handleNext = () => {
@@ -26,22 +24,38 @@ export function SecaoProdutosRelacionados({ products }: SecaoProdutosRelacionado
   };
 
   return (
-    <div className="container products-section">
+    <section className="products-section">
       <div className="products-section__header">
-        <h2 className="products-section__title">Produtos relacionados</h2>
+        <h2 className="products-section__title">Produtos Relacionados</h2>
         <div className="products-section__view-all">
-          <a href="#">Ver todos</a>
+          <a href="#todos-produtos">Ver todos</a>
         </div>
       </div>
 
-      <div style={{ position: 'relative' }}>
-        <NavegacaoProdutos onPrevious={handlePrevious} onNext={handleNext} />
-        <div className="products-section__grid">
-          {produtosExibidos.map((product, index) => (
-            <ProductCard key={startIndex + index} product={product} />
-          ))}
-        </div>
+      <div className="products-section__grid">
+        {products.slice(startIndex, startIndex + 4).map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
       </div>
-    </div>
+
+      <div className="products-section__navigation">
+        <button 
+          onClick={handlePrevious}
+          disabled={startIndex === 4}
+          className="navigation-button"
+        >
+          Anterior
+        </button>
+        <button 
+          onClick={handleNext}
+          disabled={startIndex >= products.length - 4}
+          className="navigation-button"
+        >
+          Próximo
+        </button>
+      </div>
+    </section>
   );
-}
+};
+
+export default SecaoProdutosRelacionados;

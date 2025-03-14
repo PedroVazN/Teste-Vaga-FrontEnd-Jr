@@ -1,21 +1,19 @@
-import { useState } from 'react';
-import { ProductCard } from './ProductCard';
-import { NavegacaoProdutos } from './NavegacaoProdutos';
+import React, { useState } from 'react';
+import ProductCard from './ProductCard';
 
 interface Product {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
+  nome: string;
+  descricao: string;
+  imagem: string;
+  preco: number;
 }
 
 interface SecaoProdutosProps {
   products: Product[];
 }
 
-export function SecaoProdutos({ products }: SecaoProdutosProps) {
+const SecaoProdutos: React.FC<SecaoProdutosProps> = ({ products }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const produtosExibidos = products.slice(startIndex, startIndex + 4);
 
   const handlePrevious = () => {
     setStartIndex(Math.max(0, startIndex - 4));
@@ -26,26 +24,38 @@ export function SecaoProdutos({ products }: SecaoProdutosProps) {
   };
 
   return (
-    <div className="container products-section">
-      <h2 className="products-section__title">Produtos relacionados</h2>
-      
-      <div className="products-section__nav">
-        <button className="nav-categories__button nav-categories__button--active">CELULAR</button>
-        <button className="nav-categories__button">ACESSÓRIOS</button>
-        <button className="nav-categories__button">TABLETS</button>
-        <button className="nav-categories__button">NOTEBOOKS</button>
-        <button className="nav-categories__button">TVS</button>
-        <button className="nav-categories__button">VER TODOS</button>
-      </div>
-
-      <div style={{ position: 'relative' }}>
-        <NavegacaoProdutos onPrevious={handlePrevious} onNext={handleNext} />
-        <div className="products-section__grid">
-          {produtosExibidos.map((product, index) => (
-            <ProductCard key={startIndex + index} product={product} />
-          ))}
+    <section className="products-section">
+      <div className="products-section__header">
+        <h2 className="products-section__title">Produtos em destaque</h2>
+        <div className="products-section__view-all">
+          <a href="#todos-produtos">Ver todos</a>
         </div>
       </div>
-    </div>
+
+      <div className="products-section__grid">
+        {products.slice(startIndex, startIndex + 4).map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
+
+      <div className="products-section__navigation">
+        <button 
+          onClick={handlePrevious}
+          disabled={startIndex === 0}
+          className="navigation-button"
+        >
+          Anterior
+        </button>
+        <button 
+          onClick={handleNext}
+          disabled={startIndex >= products.length - 4}
+          className="navigation-button"
+        >
+          Próximo
+        </button>
+      </div>
+    </section>
   );
-}
+};
+
+export default SecaoProdutos;

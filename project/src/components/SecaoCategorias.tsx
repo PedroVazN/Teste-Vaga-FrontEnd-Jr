@@ -1,19 +1,35 @@
-import CategoryButton from './CategoryButton';
-import { Package, Store, Wine, PenTool as Tool, Heart as HeartIcon, Dumbbell, Shirt, Home } from 'lucide-react';
+import React from 'react';
+import { FiShoppingBag, FiBook, FiTruck, FiGift, FiSmartphone, FiHome, FiCoffee, FiBox } from 'react-icons/fi';
 
-export function SecaoCategorias() {
+const SecaoCategorias: React.FC = () => {
+  const categorias = [
+    { nome: 'Todas Categorias', icone: FiShoppingBag },
+    { nome: 'Supermercado', icone: FiTruck },
+    { nome: 'Livros', icone: FiBook },
+    { nome: 'Moda', icone: FiBox },
+    { nome: 'Lançamentos', icone: FiGift },
+    { nome: 'Eletrônicos', icone: FiSmartphone },
+    { nome: 'Casa', icone: FiHome },
+    { nome: 'Outros', icone: FiCoffee },
+  ];
+
   return (
     <section className="categories-section">
       <div className="categories-section__grid">
-        <CategoryButton icon={<Package />} label="Tecnologia" />
-        <CategoryButton icon={<Store />} label="Supermercado" />
-        <CategoryButton icon={<Wine />} label="Bebidas" />
-        <CategoryButton icon={<Tool />} label="Ferramentas" />
-        <CategoryButton icon={<HeartIcon />} label="Saúde" />
-        <CategoryButton icon={<Dumbbell />} label="Esportes" />
-        <CategoryButton icon={<Shirt />} label="Moda" />
-        <CategoryButton icon={<Home />} label="Casa" />
+        {categorias.map((categoria, index) => {
+          const Icon = categoria.icone;
+          return (
+            <button key={index} className="category-button">
+              <div className="category-button__icon">
+                <Icon />
+              </div>
+              <span className="category-button__label">{categoria.nome}</span>
+            </button>
+          );
+        })}
       </div>
     </section>
   );
-}
+};
+
+export default SecaoCategorias;
