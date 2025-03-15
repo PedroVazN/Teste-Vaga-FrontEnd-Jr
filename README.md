@@ -1,8 +1,12 @@
 # Teste Econverse: Vaga Desenvolvedor Front-End
 
-![Imagem do Projeto](URL_DA_IMAGEM_DO_SITE_AQUI)
+![Imagem do Projeto](https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/bannerreadme.png?raw=true)
 
 Este é um projeto de teste para a vaga de Desenvolvedor Front-End na Econverse. A aplicação é construída com **React** e **TypeScript**, utiliza **SCSS** para estilização e implementa funcionalidades comocarrossel, modal de detalhes e layout responsivo.
+
+## Deploy
+
+- URL: https://vercel.com/pedrovazns-projects/teste-vaga-front-end-jr
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -19,49 +23,23 @@ Este é um projeto de teste para a vaga de Desenvolvedor Front-End na Econverse.
 
 ## ⚙️ Instalação e Configuração
 
+```sh
+git clone https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr
+- Gerenciador de pacotes: **npm** ou **yarn**
+```
+
+```sh
+cd project
+npm install
+npm install sass
+npm run dev
+```
 
 ### Pré-requisitos
 
-```sh
-npm install
-npm install sass
-```
-
 - [Node.js](https://nodejs.org/) (versão 14 ou superior)
-- Gerenciador de pacotes: **npm** ou **yarn**
-
 ### Clonando o Repositório
 
-```sh
-git clone https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr
-cd project
-npm run dev
-```
-## 🗂️ Estrutura do Projeto
-
-├── src
-│   ├── components
-│   │   ├── Header.tsx
-│   │   ├── SecaoHero.tsx
-│   │   ├── SecaoCategorias.tsx
-│   │   ├── SecaoParceiros.tsx
-│   │   ├── SecaoMarcas.tsx
-│   │   ├── SessaoProduct.tsx
-│   │   ├── SessaoProductRelacioned.tsx
-│   │   ├── SecaoNewsletter.tsx
-│   │   └── Footer.tsx
-│   ├── data
-│   │   └── produtos.json
-│   ├── styles
-│   │   ├── components
-│   │   └── global.scss
-│   ├── App.tsx
-│   └── main.tsx
-├── public
-│   └── imagens
-├── package.json
-├── tsconfig.json
-└── README.md
 
 
 
