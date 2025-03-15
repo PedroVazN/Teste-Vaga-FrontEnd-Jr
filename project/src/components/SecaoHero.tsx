@@ -1,20 +1,20 @@
 import React from 'react';
-
+import "../styles/components/_hero.scss";
 const SecaoHero: React.FC = () => {
   return (
     <section className="hero">
       <div className="hero__content">
-        <h1 className="hero__title">
-          Venha conhecer nossas<br />
-          promoções
-        </h1>
-        <div className="hero__discount">
-          <span className="hero__discount-amount">50% Off</span>
-          <span className="hero__discount-text">nos produtos</span>
+        <div className="hero__text">
+          <h1 className="hero__title">
+            Venha conhecer nossas<br />
+            promoções
+          </h1>
+          <p className="hero__discount">
+            <span className="hero__discount-amount">50% Off</span> nos produtos
+          </p>
+          <button className="hero__button">Ver produto</button>
         </div>
-        <button className="hero__button">Ver produto</button>
       </div>
-      <div className="hero__background" />
     </section>
   );
 };

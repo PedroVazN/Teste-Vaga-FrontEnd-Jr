@@ -1,23 +1,30 @@
-import React, { ReactNode } from 'react';
-import '../styles/components/_category-button.scss';
+import React from 'react';
 
-interface CategoryButtonProps {
-  icon: ReactNode;
-  label: string;
-  active?: boolean;
-  onClick?: () => void;
-}
+const SecaoCategorias: React.FC = () => {
+  const categorias = [
+    { nome: 'Tecnologia', imagem: 'src/images/tecnologia.svg' },
+    { nome: 'Supermercado', imagem: 'src/images/supermercados.png'},
+    { nome: 'Bebidas', imagem: 'src/images/whiskey.png'},
+    { nome: 'Ferramentas', imagem: 'src/images/ferramentas.png'},
+    { nome: 'Saúde', imagem: 'src/images/cuidados-de-saude.png'},
+    { nome: 'Esportes e Fitness', imagem: 'https://raw.githubusercontent.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/refs/heads/main/project/src/images/corrida%201.png?token=GHSAT0AAAAAAC6HWYCJ5JYN4QR37X2NAMDSZ6VNQMA' },
+    { nome: 'Moda', imagem: 'https://raw.githubusercontent.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/refs/heads/main/project/src/images/moda%201.png?token=GHSAT0AAAAAAC6HWYCJLF374R6P4FLHXHHOZ6VNQGA' },
+  ];
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ icon, label, active = false, onClick }) => {
   return (
-    <button
-      className={`category-button ${active ? 'category-button--active' : ''}`}
-      onClick={onClick}
-    >
-      <div className="category-button__icon">{icon}</div>
-      <span className="category-button__label">{label}</span>
-    </button>
+    <section className="categories-section">
+      <div className="categories-section__grid">
+        {categorias.map((categoria, index) => (
+          <div key={index} className="category-card">
+            <div className="category-card__image-container">
+              <img src={categoria.imagem} alt={categoria.nome} className="category-card__image" />
+            </div>
+            <span className="category-card__label">{categoria.nome}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
-export default CategoryButton;
+export default SecaoCategorias;

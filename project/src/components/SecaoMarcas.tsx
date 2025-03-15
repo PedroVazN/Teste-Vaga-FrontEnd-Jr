@@ -1,14 +1,30 @@
-export function SecaoMarcas() {
+import React from 'react';
+import '../styles/components/_brandsNav.scss';
+
+const SessaoMarcas: React.FC = () => {
+  const brands = [
+    { id: 1, name: '', logo: 'src/images/Logo.png' },
+    { id: 2, name: '', logo: 'src/images/Logo.png' },
+    { id: 3, name: '', logo: 'src/images/Logo.png' },
+    { id: 4, name: '', logo: 'src/images/Logo.png' },
+    { id: 5, name: '', logo: 'src/images/Logo.png' },
+  ];
+
   return (
-    <div className="container brand-section">
-      <h2 className="brand-section__title">Navegue por marcas</h2>
-      <div className="brand-section__grid">
-        {[1, 2, 3, 4, 5].map((_, index) => (
-          <div key={index} className="brand-section__item">
-            <img src="/logo.svg" alt={`Brand ${index + 1}`} />
+    <section className="brands-nav">
+      <h2>Navegue por marcas</h2>
+      <div className="brands-container">
+        {brands.map((brand) => (
+          <div key={brand.id} className="brand-circle">
+            <div className="brand-image-container">
+              <img src={brand.logo} alt={brand.name} />
+            </div>
+            <span>{brand.name}</span>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export default SessaoMarcas;

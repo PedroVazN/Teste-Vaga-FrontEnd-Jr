@@ -3,7 +3,32 @@
 @use 'components/header';
 @use 'components/nav';
 @use 'components/hero';
-@use 'components/product-card';
-@use 'components/products-navigation';
 @use 'components/category-button';
 @use 'components/app';
+@use 'components/products';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Variables
+$primary-color: #FFD700;
+$text-color: #333;
+$white: #fff;
+$yellow-button: #FFD700; 
+
+:root {
+  --font-family: 'Poppins', sans-serif;
+}
+
+// Mixins
+@mixin button {
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+  
+  // Global styles
+

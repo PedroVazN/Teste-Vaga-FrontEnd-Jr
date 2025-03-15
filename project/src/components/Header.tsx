@@ -16,16 +16,16 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <div className="container">
           <div className="header__top-info">
             <div className="header__security">
-              <FiShield size={16} />
-              <span>Compra 100% segura</span>
+             <img src="src/images/ShieldCheck.png" alt="Compra segura" />
+              <span>Compra <span className="highlight">100% segura</span></span>
             </div>
             <div className="header__shipping">
-              <FiTruck size={16} />
-              <span>Frete grátis acima de R$ 200</span>
+              <img src="src/images/Truck.png" alt="" />
+              <span>Frete <span className="highlight">grátis</span> acima de R$ 200</span>
             </div>
             <div className="header__payment">
-              <FiCreditCard size={16} />
-              <span>Parcele suas compras</span>
+            <img src="src/images/ShoppingCart.png" alt="" />
+              <span><span className="highlight">Parcele</span> suas compras</span>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 
       <div className="header__main container">
         <div className="header__logo">
-          <img src="https://raw.githubusercontent.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/refs/heads/main/project/src/images/Logo.png" alt="eConverse" />
+          <img src="src/images/Logo.png" alt="eConverse" />
         </div>
 
         <div className="header__search">
@@ -44,29 +44,17 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               onChange={handleSearchChange}
               className="search-bar__input"
             />
-            <button className="search-bar__button">
+            <button type="button" className="search-bar__button">
               <FiSearch size={20} />
             </button>
           </div>
         </div>
 
         <div className="header__actions">
-          <button className="header__action-btn">
-            <FiCalendar size={20} />
-            <span>Assinatura</span>
-          </button>
-          <button className="header__action-btn">
-            <FiHeart size={20} />
-            <span>Favoritos</span>
-          </button>
-          <button className="header__action-btn">
-            <FiUser size={20} />
-            <span>Minha Conta</span>
-          </button>
-          <button className="header__action-btn">
-            <FiShoppingCart size={20} />
-            <span>Carrinho</span>
-          </button>
+          <img src="src/images/caixa.png" alt="" />
+          <img src="src/images/Heart.png" alt="" />
+          <img src="src/images/UserCircle .png" alt="" />
+          <img src="src/images/ShoppingCart.png" alt="" />
         </div>
       </div>
 
@@ -79,6 +67,12 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             <li className="nav-menu__item"><a href="#moda">MODA</a></li>
             <li className="nav-menu__item"><a href="#lancamentos">LANÇAMENTOS</a></li>
             <li className="nav-menu__item nav-menu__item--highlight"><a href="#ofertas">OFERTAS DO DIA</a></li>
+            <li className="nav-menu__item nav-menu__item--assinatura">
+              <a href="#assinatura">
+                <img src="src/images/CrownSimple.png" alt="" />
+                <span>ASSINATURA</span>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>

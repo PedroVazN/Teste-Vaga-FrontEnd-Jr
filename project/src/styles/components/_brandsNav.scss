@@ -1,0 +1,78 @@
+@import '../main.scss';
+
+.brands-nav {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+
+  h2 {
+    text-align: center;
+    color: #1E3A8A;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .brands-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .brand-image-container {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: $text-color;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+}
+
+// Ajustes para responsividade
+@media (max-width: 768px) {
+  .brands-nav {
+    .brand-circle {
+      .brand-image-container {
+        width: 100px;
+        height: 100px;
+      }
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import SecaoHero from './components/SecaoHero';
 import SecaoCategorias from './components/SecaoCategorias';
-import SecaoProdutos from './components/SecaoProdutos';
-import SecaoProdutosRelacionados from './components/SecaoProdutosRelacionados';
-import Rodape from './components/Rodape';
 import produtosData from './data/produtos.json';
+import { SecaoParceiros } from './components/SecaoParceiros';
+import SecaoMarcas  from './components/SecaoMarcas';
+import SessaoProduct from './components/SessaoProduct';
+import SessaoProductRelacioned from './components/SessaoProductRelacioned';
+import  SecaoNewsletter  from './components/SecaoNewsletter';
+import Footer from './components/Footer';
 
 interface Product {
   nome: string;
@@ -46,10 +49,15 @@ const App: React.FC = () => {
       <main>
         <SecaoHero />
         <SecaoCategorias />
-        <SecaoProdutos products={filteredProducts} />
-        <SecaoProdutosRelacionados products={produtosFormatados} />
+        <SessaoProductRelacioned />
+        <SecaoParceiros /> 
+        <SessaoProduct />
+        <SecaoParceiros /> 
+        <SecaoMarcas />  
+        <SessaoProduct />
+        <SecaoNewsletter />
       </main>
-      <Rodape />
+      <Footer />
     </div>
   );
 };
