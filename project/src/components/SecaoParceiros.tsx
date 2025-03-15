@@ -6,7 +6,7 @@ export function SecaoParceiros() {
       
       <div className="partners-section__grid">
         {/* Partner Card 1 */}
-        <div className="partners-section__card" style={{ backgroundImage: "url('src/images/bannerParceiros.png')" }}>
+        <div className="partners-section__card" style={{ backgroundImage: "url('https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/bannerParceiros.png?raw=true')" }}>
           <div className="partners-section__card-overlay" />
           <div className="partners-section__card-content">
             <h3 className="partners-section__card-title">Parceiros</h3>
@@ -16,7 +16,7 @@ export function SecaoParceiros() {
         </div>
         
         {/* Partner Card 2 - Identical to first card to match Image 1 */}
-        <div className="partners-section__card" style={{ backgroundImage: "url('src/images/bannerParceiros.png')" }}>
+        <div className="partners-section__card" style={{ backgroundImage: "url('https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/bannerParceiros.png?raw=true')" }}>
           <div className="partners-section__card-overlay" />
           <div className="partners-section__card-content">
             <h3 className="partners-section__card-title">Parceiros</h3>

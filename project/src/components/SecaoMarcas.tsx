@@ -3,11 +3,11 @@ import '../styles/components/_brandsNav.scss';
 
 const SessaoMarcas: React.FC = () => {
   const brands = [
-    { id: 1, name: '', logo: 'src/images/Logo.png' },
-    { id: 2, name: '', logo: 'src/images/Logo.png' },
-    { id: 3, name: '', logo: 'src/images/Logo.png' },
-    { id: 4, name: '', logo: 'src/images/Logo.png' },
-    { id: 5, name: '', logo: 'src/images/Logo.png' },
+    { id: 1, name: '', logo: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true' },
+    { id: 2, name: '', logo: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true' },
+    { id: 3, name: '', logo: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true' },
+    { id: 4, name: '', logo: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true' },
+    { id: 5, name: '', logo: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true' },
   ];
 
   return (

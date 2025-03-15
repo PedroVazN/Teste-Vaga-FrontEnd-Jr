@@ -16,15 +16,15 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <div className="container">
           <div className="header__top-info">
             <div className="header__security">
-             <img src="src/images/ShieldCheck.png" alt="Compra segura" />
+             <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/ShieldCheck.png?raw=true" alt="Compra segura" />
               <span>Compra <span className="highlight">100% segura</span></span>
             </div>
             <div className="header__shipping">
-              <img src="src/images/Truck.png" alt="" />
+              <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Truck.png?raw=true" alt="" />
               <span>Frete <span className="highlight">grátis</span> acima de R$ 200</span>
             </div>
             <div className="header__payment">
-            <img src="src/images/ShoppingCart.png" alt="" />
+            <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/ShoppingCart.png?raw=true" alt="" />
               <span><span className="highlight">Parcele</span> suas compras</span>
             </div>
           </div>
@@ -51,10 +51,10 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         </div>
 
         <div className="header__actions">
-          <img src="src/images/caixa.png" alt="" />
-          <img src="src/images/Heart.png" alt="" />
-          <img src="src/images/UserCircle .png" alt="" />
-          <img src="src/images/ShoppingCart.png" alt="" />
+          <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/caixa.png?raw=true" alt="" />
+          <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Heart.png?raw=true" alt="" />
+          <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/UserCircle%20.png?raw=true" alt="" />
+          <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/ShoppingCart.png?raw=true" alt="" />
         </div>
       </div>
 
@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             <li className="nav-menu__item nav-menu__item--highlight"><a href="#ofertas">OFERTAS DO DIA</a></li>
             <li className="nav-menu__item nav-menu__item--assinatura">
               <a href="#assinatura">
-                <img src="src/images/CrownSimple.png" alt="" />
+                <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/CrownSimple.png?raw=true" alt="" />
                 <span>ASSINATURA</span>
               </a>
             </li>

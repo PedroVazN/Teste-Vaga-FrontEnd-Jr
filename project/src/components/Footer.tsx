@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/components/_footer.scss';
-// Instead of importing the logo, let's use an approach that works without requiring the exact file
+
 
 const Footer: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
             </h2>
             
             {/* Option 2: Uncomment this if you have the logo image in public folder */}
-            {/* <img src="/econverse-logo.png" alt="Econverse" className="footer-logo" /> */}
+            {/* <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true" alt="Econverse" className="footer-logo" /> */}
           </div>
           <p className="footer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           <div className="social-icons">

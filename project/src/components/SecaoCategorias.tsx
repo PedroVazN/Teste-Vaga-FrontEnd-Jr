@@ -2,13 +2,13 @@ import React from 'react';
 
 const SecaoCategorias: React.FC = () => {
   const categorias = [
-    { nome: 'Tecnologia', imagem: 'src/images/tecnologia.png' },
-    { nome: 'Supermercado', imagem: 'src/images/supermercados 1.png' },
-    { nome: 'Bebidas', imagem: 'src/images/whiskey.png' },
-    { nome: 'Ferramentas', imagem: 'src/images/ferramentas 1.png' },
-    { nome: 'Saúde', imagem: 'src/images/cuidados-de-saude 1.png' },
-    { nome: 'Esportes e Fitness', imagem: 'src/images/corrida 1.png' },
-    { nome: 'Moda', imagem: 'src/images/moda 1.png' },
+    { nome: 'Tecnologia', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/tecnologia.png?raw=true' },
+    { nome: 'Supermercado', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/supermercados%201.png?raw=true' },
+    { nome: 'Bebidas', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/whiskey.png?raw=true' },
+    { nome: 'Ferramentas', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/ferramentas%201.png?raw=true' },
+    { nome: 'Saúde', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/cuidados-de-saude%201.png?raw=true' },
+    { nome: 'Esportes e Fitness', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/corrida%201.png?raw=true' },
+    { nome: 'Moda', imagem: 'https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/moda%201.png?raw=true' },
   ];
 
   return (
