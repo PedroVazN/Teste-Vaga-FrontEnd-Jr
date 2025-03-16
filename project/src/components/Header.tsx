@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 
       <div className="header__main container">
         <div className="header__logo">
-          <img src="src/images/Logo.png" alt="eConverse" />
+          <img src="https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr/blob/main/project/src/images/Logo.png?raw=true" alt="eConverse" />
         </div>
 
         <div className="header__search">

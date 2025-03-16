@@ -24,7 +24,6 @@ Este é um projeto de teste para a vaga de Desenvolvedor Front-End na Econverse.
 ## ⚙️ Instalação e Configuração
 
 ```sh
-git clone https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr
 - Gerenciador de pacotes: **npm** ou **yarn**
 ```
 
@@ -38,8 +37,12 @@ npm run dev
 ### Pré-requisitos
 
 - [Node.js](https://nodejs.org/) (versão 14 ou superior)
+
 ### Clonando o Repositório
 
+```sh
+git clone https://github.com/PedroVazN/Teste-Vaga-FrontEnd-Jr
+```
 
 
 
