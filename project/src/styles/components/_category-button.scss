@@ -4,17 +4,20 @@
 .categories-section {
   margin-top: $spacing-8;
   padding: 0 $spacing-4;
+  width: 100%;
   
   &__container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
   }
 
   &__grid {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: $spacing-6;
+    gap: $spacing-4;
+    width: 100%;
   }
 }
 
@@ -23,15 +26,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-6;
+  padding: $spacing-4;
   border: none;
   background: $gray-100;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  max-width: 150px;
-  min-width: 120px;
-  gap: $spacing-3;
+  flex: 0 1 calc(14.28% - #{$spacing-4}); // 7 itens por linha em telas grandes
+  min-width: 100px;
+  gap: $spacing-2;
 
   &:hover {
     background: $gray-200;
@@ -42,12 +45,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: $spacing-3;
+    margin-bottom: $spacing-2;
   }
 
   &__image {
-    width: 61px;
-    height: 61px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__label {
@@ -55,6 +69,18 @@
     font-size: 0.875rem;
     font-weight: 500;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    
+    @media (max-width: 768px) {
+      font-size: 0.75rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.7rem;
+    }
   }
 
   &--active {
@@ -68,5 +94,26 @@
     &:hover {
       background: color.adjust($primary-color, $lightness: -10%);
     }
+  }
+  
+  // Responsividade
+  @media (max-width: 1200px) {
+    flex: 0 1 calc(20% - #{$spacing-4}); // 5 itens por linha
+  }
+  
+  @media (max-width: 992px) {
+    flex: 0 1 calc(25% - #{$spacing-4}); // 4 itens por linha
+    padding: $spacing-3;
+  }
+  
+  @media (max-width: 768px) {
+    flex: 0 1 calc(33.333% - #{$spacing-4}); // 3 itens por linha
+    padding: $spacing-2;
+  }
+  
+  @media (max-width: 480px) {
+    flex: 0 1 calc(50% - #{$spacing-3}); // 2 itens por linha
+    min-width: 80px;
+    padding: $spacing-2;
   }
 }

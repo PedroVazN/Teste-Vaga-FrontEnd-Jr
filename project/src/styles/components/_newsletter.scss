@@ -1,97 +1,97 @@
 .newsletter-container {
-    width: 100%;
-    background-color: #31254e;
-    color: white;
-    padding: 30px 15px;
-    font-family: 'Arial', sans-serif;
-    
-    .newsletter-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .newsletter-title {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    
-    .newsletter-description {
-      font-size: 14px;
-      opacity: 0.9;
-      margin-bottom: 20px;
-    }
-    
-    .newsletter-form {
-      .form-inputs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 10px;
-        
-        input {
-          flex: 1;
-          min-width: 200px;
-          padding: 12px 15px;
-          border: none;
-          border-radius: 4px;
-          font-size: 14px;
-          
-          &::placeholder {
-            color: #999;
-          }
-          
-          &:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-          }
-        }
-        
-        .subscribe-btn {
-          padding: 12px 20px;
-          background-color: #fcd34d;
-          color: #333;
-          border: none;
-          border-radius: 4px;
-          font-weight: bold;
-          cursor: pointer;
-          text-transform: uppercase;
-          font-size: 14px;
-          transition: background-color 0.2s;
-          
-          &:hover {
-            background-color: #f8c233;
-          }
-        }
-      }
-      
-      .form-checkbox {
-        display: flex;
-        align-items: center;
-        
-        label {
-          display: flex;
-          align-items: center;
-          font-size: 14px;
-          cursor: pointer;
-          
-          input {
-            margin-right: 8px;
-            cursor: pointer;
-          }
-        }
-      }
-    }
+  width: 100%;
+  background-color: #31254e;
+  color: white;
+  padding: 30px 15px;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+.newsletter-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.newsletter-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.newsletter-description {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.newsletter-form .form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.newsletter-form .form-inputs input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  
+  &::placeholder {
+    color: #999;
   }
   
-  @media (max-width: 768px) {
-    .newsletter-form {
-      .form-inputs {
-        flex-direction: column;
-        
-        input, .subscribe-btn {
-          width: 100%;
-        }
-      }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.newsletter-form .form-inputs .subscribe-btn {
+  padding: 12px 20px;
+  background-color: #fcd34d;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #f8c233;
+  }
+}
+
+.newsletter-form .form-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-form .form-checkbox label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.newsletter-form .form-checkbox label input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .newsletter-form .form-inputs {
+    flex-direction: column;
+    
+    input, .subscribe-btn {
+      width: 100%;
     }
   }
+}

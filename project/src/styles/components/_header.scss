@@ -1,139 +1,321 @@
 @use "sass:color";
 
+// Mobile first approach - define breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Add missing variables
+$gray-600: #9F9F9F; // Using the same gray color as in your original code
+$primary-color: #4F46E5; // Using the highlight color from your original code
+
 .header {
   font-family: 'Poppins', sans-serif;
   background-color: #fff;
   border-bottom: 1px solid #F0F0F0;
   width: 100%;
-
+  
   &__top-bar {
     background-color: #fff;
     padding: 8px 0;
     border-bottom: 1px solid #F0F0F0;
+    display: block; // Always visible
     
     .container {
       display: flex;
       justify-content: center;
     }
   }
-
+  
   &__top-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 10px; // Smaller gap on mobile
+    flex-wrap: wrap; // Allow wrapping on small screens
     color: #9F9F9F;
-    font-size: 13px;
+    font-size: 11px; // Even smaller font on mobile
     padding: 0;
     margin: 0;
-    max-width: 900px;
     width: 100%;
-
+    
+    @media (min-width: $breakpoint-sm) {
+      font-size: 12px;
+      gap: 15px;
+    }
+    
+    @media (min-width: $breakpoint-md) {
+      gap: 40px; // Increase gap on tablet
+      font-size: 13px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      gap: 60px; // Original gap on desktop
+      max-width: 900px;
+    }
+    
     > div {
       display: flex;
       align-items: center;
-      gap: 8px;
-
-      img {
-        width: 16px;
-        height: 16px;
-        object-fit: contain;
+      gap: 4px; // Smaller gap on mobile
+      
+      @media (min-width: $breakpoint-sm) {
+        gap: 6px;
       }
-
+      
+      @media (min-width: $breakpoint-md) {
+        gap: 8px; // Original gap on larger screens
+      }
+      
+      img {
+        width: 12px; // Smaller on mobile
+        height: 12px;
+        object-fit: contain;
+        
+        @media (min-width: $breakpoint-sm) {
+          width: 14px;
+          height: 14px;
+        }
+        
+        @media (min-width: $breakpoint-md) {
+          width: 16px; // Original size on larger screens
+          height: 16px;
+        }
+      }
+      
       span {
         white-space: nowrap;
         font-weight: 400;
         color: #9F9F9F;
         letter-spacing: -0.2px;
       }
-
+      
       .highlight {
-        color: #4F46E5; // Azul/roxo conforme a imagem
+        color: #4F46E5;
         font-weight: 500;
       }
     }
   }
-
+  
   &__main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
-    gap: 40px;
+    padding: 12px 0; // Smaller padding on mobile
+    gap: 10px; // Smaller gap on mobile
+    
+    @media (min-width: $breakpoint-md) {
+      padding: 16px 0; // Original padding on larger screens
+      gap: 20px; // Medium gap on tablet
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      gap: 40px; // Original gap on desktop
+    }
   }
-
+  
   &__logo {
-    height: 36px;
+    height: 30px; // Smaller on mobile
     width: auto;
     display: flex;
     align-items: center;
-
+    
+    @media (min-width: $breakpoint-md) {
+      height: 36px; // Original size on larger screens
+    }
+    
     img {
       height: 100%;
       width: auto;
       object-fit: contain;
     }
   }
-
+  
   &__search {
     flex: 1;
     max-width: 600px;
-
+    display: none; // Hide on mobile by default
+    
+    @media (min-width: $breakpoint-md) {
+      display: block; // Show on tablet and above
+    }
+    
     .search-bar {
       display: flex;
       background-color: #F8F8F8;
       border-radius: 50px;
       overflow: hidden;
       border: 1px solid #EFEFEF;
-
+      
       &__input {
         flex: 1;
-        padding: 12px 20px;
+        padding: 10px 15px; // Smaller padding on mobile
         border: none;
         background: transparent;
-        font-size: 14px;
+        font-size: 13px; // Smaller font on mobile
         font-family: 'Poppins', sans-serif;
         color: #9F9F9F;
-
+        
+        @media (min-width: $breakpoint-md) {
+          padding: 12px 20px; // Original padding on larger screens
+          font-size: 14px; // Original font size on larger screens
+        }
+        
         &::placeholder {
           color: #9F9F9F;
           font-weight: 400;
         }
-
+        
         &:focus {
           outline: none;
         }
       }
-
+      
       &__button {
-        padding: 0 20px;
+        padding: 0 15px; // Smaller padding on mobile
         background: transparent;
         border: none;
         cursor: pointer;
         color: #9F9F9F;
         display: flex;
         align-items: center;
+        
+        @media (min-width: $breakpoint-md) {
+          padding: 0 20px; // Original padding on larger screens
+        }
       }
     }
   }
-
+  
+  // Mobile search button and menu toggle
+  &__mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    @media (min-width: $breakpoint-md) {
+      display: none; // Hide on tablet and above
+    }
+    
+    img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+  
   &__actions {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 10px; // Even smaller gap on small mobile
+    
+    @media (min-width: $breakpoint-sm) {
+      gap: 16px; // Smaller gap on regular mobile
+    }
+    
+    @media (min-width: $breakpoint-md) {
+      gap: 24px; // Original gap on larger screens
+    }
     
     img {
-      width: 24px;
-      height: 24px;
+      width: 18px; // Even smaller on small mobile
+      height: 18px;
       cursor: pointer;
       object-fit: contain;
+      
+      @media (min-width: $breakpoint-sm) {
+        width: 20px; // Smaller on mobile
+        height: 20px;
+      }
+      
+      @media (min-width: $breakpoint-md) {
+        width: 24px; // Original size on larger screens
+        height: 24px;
+      }
     }
   }
-
+  
   &__nav {
     background-color: #fff;
     border-top: 1px solid #F0F0F0;
-    padding: 4px 0;
+    padding: 0;
+    display: none; // Hide on mobile by default
+    
+    @media (min-width: $breakpoint-lg) {
+      display: block; // Show on desktop and above
+      padding: 4px 0;
+    }
+  }
+  
+  // Mobile nav that slides in
+  &__mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    
+    &.open {
+      left: 0;
+    }
+    
+    &-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    
+    &-search {
+      margin: 20px 0;
+      
+      .search-bar {
+        display: flex;
+        background-color: #F8F8F8;
+        border-radius: 50px;
+        overflow: hidden;
+        border: 1px solid #EFEFEF;
+        
+        &__input {
+          flex: 1;
+          padding: 10px 15px;
+          border: none;
+          background: transparent;
+          font-size: 13px;
+          font-family: 'Poppins', sans-serif;
+          color: #9F9F9F;
+          
+          &::placeholder {
+            color: #9F9F9F;
+            font-weight: 400;
+          }
+          
+          &:focus {
+            outline: none;
+          }
+        }
+        
+        &__button {
+          padding: 0 15px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: #9F9F9F;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
   }
 }
 
@@ -143,51 +325,190 @@
   list-style: none;
   margin: 0;
   padding: 12px 0;
-  gap: 60px; // Aumentado para espaçar bem os itens
-
+  gap: 30px; // Smaller gap on tablet
+  overflow-x: auto; // Allow horizontal scrolling on smaller screens
+  -webkit-overflow-scrolling: touch;
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: 60px; // Original gap on desktop
+    overflow-x: visible; // Remove horizontal scrolling on desktop
+  }
+  
   &__item {
     a {
       text-decoration: none;
       color: #9F9F9F;
-      font-size: 13px;
+      font-size: 12px; // Smaller font on mobile/tablet
       font-weight: 500;
       white-space: nowrap;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px; // Smaller gap on mobile/tablet
       transition: color 0.2s ease;
-
+      
+      @media (min-width: $breakpoint-lg) {
+        font-size: 13px; // Original font size on desktop
+        gap: 8px; // Original gap on desktop
+      }
+      
       &:hover {
         color: #4F46E5;
       }
     }
-
+    
     &--highlight {
       a {
         color: #4F46E5;
         font-weight: 600;
       }
     }
-
+    
     &--assinatura {
       margin-left: auto;
       
       a {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px; // Smaller gap on mobile/tablet
+        
+        @media (min-width: $breakpoint-lg) {
+          gap: 8px; // Original gap on desktop
+        }
         
         img {
-          width: 16px;
-          height: 16px;
+          width: 14px; // Smaller on mobile/tablet
+          height: 14px;
           object-fit: contain;
+          
+          @media (min-width: $breakpoint-lg) {
+            width: 16px; // Original size on desktop
+            height: 16px;
+          }
+        }
+      }
+    }
+  }
+  
+  // Mobile version of nav menu
+  &--mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    
+    .nav-menu__item {
+      width: 100%;
+      
+      a {
+        font-size: 14px;
+        padding: 8px 0;
+      }
+      
+      &--assinatura {
+        margin-left: 0;
+        margin-top: 20px;
+        
+        a {
+          justify-content: center;
+          padding: 12px 15px;
+          background-color: #4F46E5;
+          color: #fff;
+          border-radius: 50px;
+          
+          img {
+            filter: brightness(0) invert(1);
+          }
         }
       }
     }
   }
 }
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px; // Smaller padding on small mobile
+  
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 15px; // Smaller padding on regular mobile
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    padding: 0 20px; // Original padding on larger screens
+  }
+}
+
+// Responsive nav-categories (from additional code)
+.nav-categories {
+  overflow-x: auto; // Allow horizontal scrolling on mobile
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  
+  &__button {
+    padding: 0.75rem 1rem; // Smaller padding on mobile
+    font-weight: 500;
+    white-space: nowrap;
+    color: #9F9F9F; // Using direct color instead of $gray-600
+    border-bottom: 2px solid transparent;
+    font-size: 13px; // Smaller font on mobile
+    
+    @media (min-width: $breakpoint-md) {
+      padding: 1rem 1.5rem; // Medium padding on tablet
+      font-size: 14px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      padding: 1rem 2rem; // Original padding on desktop
+    }
+    
+    &--active {
+      color: #4F46E5; // Using direct color instead of $primary-color
+      border-bottom-color: #4F46E5; // Using direct color instead of $primary-color
+    }
+  }
+}
+
+// Updated categories grid for responsiveness
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem; // Smaller gap on mobile
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; // Original gap on larger screens
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+// Overlay for mobile menu
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Add mobile menu toggle button for small screens
+.mobile-menu-toggle {
+  display: block;
+  
+  @media (min-width: $breakpoint-md) {
+    display: none;
+  }
 }

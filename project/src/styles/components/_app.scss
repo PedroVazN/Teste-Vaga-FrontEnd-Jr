@@ -1,14 +1,60 @@
 @use '../variables' as *;
 @use 'sass:color';
 
+// Keyframes para animações
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(-5deg) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
 .app {
   min-height: 100vh;
   background-color: $gray-100;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 .categories-section {
   padding: $spacing-8 0;
   background-color: $white;
+  animation: fadeIn 0.8s ease-in-out;
 
   &__grid {
     display: grid;
@@ -17,6 +63,17 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 $spacing-4;
+
+    > * {
+      animation: slideInUp 0.5s ease-out;
+      animation-fill-mode: both;
+      
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+    }
 
     @media (max-width: $xl) {
       grid-template-columns: repeat(6, 1fr);
@@ -39,6 +96,7 @@
 
 .products-section {
   padding: $spacing-8 0;
+  animation: fadeIn 0.8s ease-in-out;
 
   &__header {
     display: flex;
@@ -48,6 +106,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 $spacing-4;
+    animation: slideInUp 0.5s ease-out;
   }
 
   &__title {
@@ -55,6 +114,22 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $primary-color;
+      transition: width 0.4s ease;
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
   }
 
   &__nav {
@@ -94,6 +169,17 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 $spacing-4;
+    
+    > * {
+      animation: rotateIn 0.5s ease-out;
+      animation-fill-mode: both;
+      
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+    }
 
     @media (max-width: $lg) {
       grid-template-columns: repeat(3, 1fr);
@@ -114,10 +200,23 @@
       color: $gray-600;
       text-decoration: none;
       font-size: 0.875rem;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: '→';
+        opacity: 0;
+        margin-left: 0;
+        transition: all 0.3s ease;
+      }
 
       &:hover {
         color: color.adjust($gray-600, $lightness: -15%);
+        
+        &::after {
+          opacity: 1;
+          margin-left: 5px;
+        }
       }
     }
   }
@@ -131,11 +230,12 @@
     color: $gray-600;
     font-weight: 500;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.3s ease;
     white-space: nowrap;
 
     &:hover {
       color: $primary-color;
+      transform: translateY(-2px);
     }
 
     &--active {
@@ -151,6 +251,7 @@
         width: 100%;
         height: 2px;
         background-color: $primary-color;
+        animation: slideInUp 0.3s ease-out;
       }
     }
   }
@@ -158,22 +259,37 @@
 
 .partners-section {
   padding: 2rem 0;
+  animation: fadeIn 0.8s ease-in-out;
   
   &__title {
     color: $primary-color;
     margin-bottom: 2rem;
+    animation: slideInUp 0.5s ease-out;
   }
   
   &__view-all {
     text-align: center;
     margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
     
     a {
       color: $gray-600;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
+      
+      &::after {
+        content: '→';
+        opacity: 0;
+        margin-left: 0;
+        transition: all 0.3s ease;
+      }
       
       &:hover {
         color: color.adjust($gray-600, $lightness: -10%);
+        
+        &::after {
+          opacity: 1;
+          margin-left: 5px;
+        }
       }
     }
   }
@@ -182,6 +298,19 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    
+    > * {
+      animation: slideInUp 0.6s ease-out;
+      animation-fill-mode: both;
+      
+      &:nth-child(odd) {
+        animation-delay: 0.1s;
+      }
+      
+      &:nth-child(even) {
+        animation-delay: 0.3s;
+      }
+    }
     
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
@@ -195,11 +324,30 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      
+      .partners-section__card-title {
+        transform: translateY(-5px);
+      }
+      
+      .partners-section__card-button {
+        animation: pulse 1s infinite;
+      }
+    }
     
     &-overlay {
       position: absolute;
       inset: 0;
       background-color: rgba(0, 0, 0, 0.5);
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.65);
+      }
     }
     
     &-content {
@@ -216,11 +364,13 @@
       font-weight: bold;
       color: $white;
       margin-bottom: 1rem;
+      transition: transform 0.3s ease;
     }
     
     &-text {
       color: $white;
       margin-bottom: 1rem;
+      animation: fadeIn 1s ease-in-out;
     }
     
     &-button {
@@ -230,10 +380,12 @@
       border-radius: 0.375rem;
       width: fit-content;
       font-weight: 600;
-      transition: background-color 0.2s;
+      transition: all 0.3s ease;
       
       &:hover {
         background-color: #FFC700;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
       }
     }
   }
@@ -242,22 +394,40 @@
 .newsletter {
   background-color: #1C1C1C;
   padding: 2rem 0;
+  animation: fadeIn 0.8s ease-in-out;
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: slideInUp 0.5s ease-out;
   }
 
   &__title {
     color: $white;
     margin-bottom: 1rem;
+    position: relative;
+    animation: fadeIn 0.8s ease-in-out;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FFD700, transparent);
+      animation: shimmer 2s infinite linear;
+      background-size: 200% 100%;
+    }
   }
 
   &__text {
     color: #9CA3AF;
     margin-bottom: 1.5rem;
     text-align: center;
+    animation: fadeIn 1s ease-in-out 0.2s;
+    animation-fill-mode: both;
   }
 
   &__form {
@@ -266,6 +436,8 @@
     gap: 1rem;
     width: 100%;
     max-width: 48rem;
+    animation: slideInUp 0.5s ease-out 0.4s;
+    animation-fill-mode: both;
 
     @media (min-width: 768px) {
       flex-direction: row;
@@ -276,6 +448,14 @@
     flex: 1;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    
+    &:focus {
+      border-color: #FFD700;
+      box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+      outline: none;
+    }
   }
 
   &__button {
@@ -284,10 +464,18 @@
     padding: 0.5rem 2rem;
     border-radius: 0.375rem;
     font-weight: 600;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 
     &:hover {
       background-color: #FFC700;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
     }
   }
 
@@ -297,70 +485,14 @@
     gap: 0.5rem;
     color: $white;
     margin-top: 1rem;
-  }
-}
-
-.footer {
-  background-color: $white;
-  padding: 2rem 0;
-  border-top: 1px solid $gray-200;
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 1024px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  &__logo {
-    height: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  &__text {
-    color: $gray-600;
-    margin-bottom: 1rem;
-  }
-
-  &__social {
-    display: flex;
-    gap: 1rem;
-
-    a {
-      color: $gray-600;
-      transition: color 0.2s;
-
-      &:hover {
-        color: color.adjust($gray-600, $lightness: -20%);
-      }
-    }
-  }
-
-  &__title {
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-
-  &__links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    a {
-      color: $gray-600;
-      transition: color 0.2s;
-
-      &:hover {
-        color: color.adjust($gray-600, $lightness: -20%);
-      }
+    animation: fadeIn 1s ease-in-out 0.6s;
+    animation-fill-mode: both;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #FFD700;
     }
   }
 }
+
+

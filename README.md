@@ -6,7 +6,7 @@ Este é um projeto de teste para a vaga de Desenvolvedor Front-End na Econverse.
 
 ## Deploy
 
-- URL: https://vercel.com/pedrovazns-projects/teste-vaga-front-end-jr
+- URL: https://teste-vaga-front-end-jr-tan.vercel.app
 
 ## 🚀 Tecnologias Utilizadas
 

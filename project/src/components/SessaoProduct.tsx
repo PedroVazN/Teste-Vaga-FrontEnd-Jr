@@ -3,31 +3,37 @@ import { ChevronLeft, ChevronRight, Truck, X } from 'lucide-react';
 import productsData from '../data/produtos.json';
 import '../styles/components/_product-modal.scss';
 
-// Define types based on your products.json structure
+// Define os tipos com base na estrutura do seu arquivo products.json
 interface Product {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
-  description?: string;
+  productName: string;        // Nome do produto
+  descriptionShort: string;   // Descrição curta do produto
+  photo: string;              // URL da imagem
+  price: number;              // Preço do produto
+  description?: string;       // Descrição detalhada (opcional)
 }
 
 interface ProductsData {
-  products: Product[];
+  products: Product[];        // Array de produtos
 }
 
-// Type assertion for imported JSON data
+// Asserção de tipo para os dados JSON importados
 const typedProductsData = productsData as ProductsData;
 
-const SessaoProduct: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState(1);
-  const productsPerPage = 4; // Fixado em 4 produtos
+/* Componente SessaoProduct - Exibe produtos relacionados em um carrossel
+  com navegação e modal de detalhes do produto */
 
-  // Calcula o número total de páginas
+const SessaoProduct: React.FC = () => {
+  // Estados principais
+  const [currentIndex, setCurrentIndex] = useState(0);                    // Índice atual no carrossel
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); // Produto selecionado para o modal
+  const [quantity, setQuantity] = useState(1);                            // Quantidade no modal
+  const productsPerPage = 4;                                              // Fixado em 4 produtos por página
+
+  // Cálculo de páginas totais para navegação
   const totalPages = Math.ceil(typedProductsData.products.length / productsPerPage);
 
+  //Avança para o próximo conjunto de produtos
+   
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex + productsPerPage;
@@ -35,68 +41,59 @@ const SessaoProduct: React.FC = () => {
     });
   };
 
+  // Retorna ao conjunto anterior de produtos
+  
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
       const prevPageIndex = prevIndex - productsPerPage;
-      return prevPageIndex < 0 ? 
-        (totalPages - 1) * productsPerPage : 
+      return prevPageIndex < 0 ?
+        (totalPages - 1) * productsPerPage :
         prevPageIndex;
     });
   };
 
-  // Modal functions
+  // Funções para controle do modal
   const openProductModal = (product: Product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden'; // Impede rolagem quando o modal está aberto
   };
-  
+
   const closeProductModal = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto'; // Reativa rolagem
   };
 
-  const incrementQuantity = () => {
-    setQuantity(prev => prev + 1);
-  };
+  // Controle de quantidade no modal
+  const incrementQuantity = () => setQuantity(prev => prev + 1);
+  const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
 
-  const decrementQuantity = () => {
-    setQuantity(prev => (prev > 1 ? prev - 1 : 1));
-  };
-
-  // Pega exatamente 4 produtos para mostrar
+  // Seleciona produtos a serem exibidos
   const visibleProducts = typedProductsData.products.slice(currentIndex, currentIndex + productsPerPage);
-  
-  // Se não tivermos 4 produtos completos, pegamos do início da lista
-  const displayProducts = visibleProducts.length === productsPerPage ? 
-    visibleProducts : 
+
+  // Complementa com produtos do início se não tiver 4 completos
+  const displayProducts = visibleProducts.length === productsPerPage ?
+    visibleProducts :
     [...visibleProducts, ...typedProductsData.products.slice(0, productsPerPage - visibleProducts.length)];
 
   return (
     <section className="products" id="products">
       <div className="products__container">
+        {/* Cabeçalho da seção */}
         <h2 className="products__title">Produtos relacionados</h2>
-        <p className="products__subtitle">Confira nossa seleção de produtos premium para você</p>
-        
+        <p className="products__subtitle">Ver Mais</p>
+
+        {/* Carrossel de produtos */}
         <div className="products__carousel">
-          <button
-            className="products__nav-button products__nav-button--prev"
-            onClick={prevSlide}
-          >
+          {/* Botão anterior */}
+          <button className="products__nav-button products__nav-button--prev" onClick={prevSlide}>
             <ChevronLeft size={20} />
           </button>
 
+          {/* Grid de produtos */}
           <div className="products__grid">
             {displayProducts.map((product) => (
-              <div 
-                key={product.productName} 
-                className="products__card"
-                onClick={() => openProductModal(product)}
-              >
-                <img
-                  src={product.photo}
-                  alt={product.productName}
-                  className="products__image"
-                />
+              <div key={product.productName} className="products__card" onClick={() => openProductModal(product)}>
+                <img src={product.photo} alt={product.productName} className="products__image" />
                 <p className="products__name">{product.descriptionShort}</p>
                 <span className="products__price-original">R$ 30,90</span>
                 <span className="products__price-current">R$ {product.price.toFixed(2)}</span>
@@ -107,28 +104,21 @@ const SessaoProduct: React.FC = () => {
                   <Truck size={16} />
                   Frete grátis
                 </span>
-                <button 
-                  className="products__button"
-                  onClick={(e) => {
-                    e.stopPropagation(); 
-                  }}
-                >
+                <button className="products__button" onClick={(e) => { e.stopPropagation(); }}>
                   COMPRAR
                 </button>
               </div>
             ))}
           </div>
 
-          <button
-            className="products__nav-button products__nav-button--next"
-            onClick={nextSlide}
-          >
+          {/* Botão próximo */}
+          <button className="products__nav-button products__nav-button--next" onClick={nextSlide}>
             <ChevronRight size={20} />
           </button>
         </div>
       </div>
 
-      {/* Product Modal */}
+      {/* Modal de produto - apenas visível quando um produto está selecionado */}
       {selectedProduct && (
         <div className="product-modal">
           <div className="product-modal__overlay" onClick={closeProductModal}></div>
@@ -137,13 +127,11 @@ const SessaoProduct: React.FC = () => {
               <X size={24} />
             </button>
             <div className="product-modal__layout">
+              {/* Seção de imagem */}
               <div className="product-modal__image-container">
-                <img 
-                  src={selectedProduct.photo} 
-                  alt={selectedProduct.productName} 
-                  className="product-modal__image"
-                />
+                <img src={selectedProduct.photo} alt={selectedProduct.productName} className="product-modal__image" />
               </div>
+              {/* Seção de informações */}
               <div className="product-modal__info">
                 <h2 className="product-modal__title">{selectedProduct.descriptionShort}</h2>
                 <p className="product-modal__description">{selectedProduct.description || 'LOREM IPSUM DOLOR SIT AMET'}</p>
@@ -158,25 +146,16 @@ const SessaoProduct: React.FC = () => {
                   <Truck size={16} />
                   <span>Frete grátis</span>
                 </div>
+                {/* Controle de quantidade */}
                 <div className="product-modal__quantity">
-                  <button 
-                    className="product-modal__quantity-btn" 
-                    onClick={decrementQuantity}
-                  >
-                    -
-                  </button>
-                  <input 
-                    type="text" 
-                    value={quantity.toString().padStart(2, '0')} 
-                    className="product-modal__quantity-input" 
-                    readOnly 
+                  <button className="product-modal__quantity-btn" onClick={decrementQuantity}>-</button>
+                  <input
+                    type="text"
+                    value={quantity.toString().padStart(2, '0')}
+                    className="product-modal__quantity-input"
+                    readOnly
                   />
-                  <button 
-                    className="product-modal__quantity-btn"
-                    onClick={incrementQuantity}
-                  >
-                    +
-                  </button>
+                  <button className="product-modal__quantity-btn" onClick={incrementQuantity}>+</button>
                 </div>
                 <button className="product-modal__buy-button">COMPRAR</button>
                 <a href="#" className="product-modal__more-link">Veja mais detalhes do produto &gt;</a>
